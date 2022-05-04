@@ -7,15 +7,15 @@ import math
 
 
 
-def generatetestpicture(test_folder,save_folder,num=25):         #将test_file文件夹下的图片分成num份，拼接之后保存在save_file中，save_file通常是datasets/test
+def generatetestpicture(test_folder,save_folder,num=9):         #将test_file文件夹下的图片分成num份，拼接之后保存在save_file中，save_file通常是datasets/test
     dir_num=len(os.listdir(test_folder))
     for k in range(dir_num):
         img = cv2.imread('{}/{}.jpg'.format(test_folder,k))
-        a, b, c, d = cutimg(img,num)       #核心代码--切块
+        a, b, c, d,e = cutimg(img,num)       #核心代码--切块
 
         for i in range(int(math.sqrt(num))):
             for j in range(int(math.sqrt(num))):
-                img1 = np.hstack((a[i][j], b[i][j], c[i][j], d[i][j]))
+                img1 = np.hstack((a[i][j], b[i][j], c[i][j], d[i][j],e[i][j]))
                 cv2.imwrite('{}/{}_{}_{}.jpg'.format(save_folder,k,i,j), img1,[int(cv2.IMWRITE_JPEG_QUALITY), 100])
 
 def finalpicture(test_folder,input_folder,num,save_folder):      #test_folder和上面一致，input_folder是results中images文件夹，save_folder一般是savewjj
@@ -111,5 +111,5 @@ def finalpicture(test_folder,input_folder,num,save_folder):      #test_folder和
         cv2.imwrite('{}/{}.jpg'.format(save_folder,i), dat,[int(cv2.IMWRITE_JPEG_QUALITY), 100])
         print("第{}张图片已经保存".format(i))
 
-# generatetestpicture('./test','dataset/test',num=25)
-finalpicture('./test','./results/FA_sequenc/test_latest/images',5,'save')
+generatetestpicture('./test','dataset/test',num=9)
+# finalpicture('./test','./results/FA_sequenc/test_latest/images',5,'save')
