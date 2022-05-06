@@ -6,12 +6,13 @@ import numpy as np
 
 
 
-def cutimg(img, num=9,overlap_factor=192):
+def cutimg(img, num=25,overlap_factor=128):
 
     print(img.shape)
+
     """a,b,c,d,分别存储A,B1,B2,B3的256*256块"""
     factor = int(np.sqrt(num))
-    x=4
+    x=6
     a=[]
     a1=[]
     b1=[]
@@ -41,6 +42,13 @@ def cutimg(img, num=9,overlap_factor=192):
             c1.append(img_temp3)
             d1.append(img_temp4)
             e1.append(img_temp5)
+            # cv2.imshow('0',img)
+            # cv2.imshow('1',img_temp1)
+            # cv2.imshow('2', img_temp2)
+            # cv2.imshow('3', img_temp3)
+            # cv2.imshow('4', img_temp4)
+            # cv2.imshow('5', img_temp5)
+            cv2.waitKey(0)
         a.append(a1)
         b.append(b1)
         c.append(c1)
