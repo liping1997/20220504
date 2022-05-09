@@ -32,9 +32,9 @@ class SeqModel(BaseModel):
                            'G2_GAN', 'G2_L1', 'G2_perceptual', 'D2_real', 'D2_fake',]
         # specify the images you want to save/display. The training/train scripts will call <BaseModel.get_current_visuals>
         # self.visual_names = ['real_A', 'fake_B0', 'real_B0', 'fake_B1', 'real_B1', 'fake_B2', 'real_B2']
-        # self.visual_names = ['real_A', 'fake_B0', 'real_B0']
+        self.visual_names = ['real_A', 'fake_B0', 'real_B0']
         # self.visual_names = ['real_A', 'real_B1', 'fake_B1']
-        self.visual_names = ['real_A', 'fake_B2', 'real_B2']
+        # self.visual_names = ['real_A', 'fake_B2', 'real_B2']
         # specify the models you want to save to the disk. The training/train scripts will call <BaseModel.save_networks> and <BaseModel.load_networks>
         if self.isTrain:
             self.model_names = ['G0', 'D0', 'G1',  'G2','G','D1','D2']
@@ -89,9 +89,9 @@ class SeqModel(BaseModel):
             self.optimizers.append(self.optimizer_D0)
             self.optimizers.append(self.optimizer_D1)
             self.optimizers.append(self.optimizer_D2)
-        # self.pic_num=0
+        self.pic_num=0
         # self.pic_num = 1
-        self.pic_num = 2
+        # self.pic_num = 2
 
     def set_input(self, input):
 
